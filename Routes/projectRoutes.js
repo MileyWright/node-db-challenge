@@ -58,7 +58,7 @@ router.get('/', (req,res) => {
 //POST Adding tasks /project/tasks
 router.post('/tasks', (req,res) => {
     const body = req.body
-    db.addTask()
+    db.addTask(body)
         .then(task => {
             res.status(201).json({task})
         })
@@ -69,5 +69,16 @@ router.post('/tasks', (req,res) => {
 })
 
 //GET Retrieving a list of tasks /projects/tasks
+router.get('/:id/tasks', (req,res) => {
+    const id = req.params.id;
+    db.getTaskAndProjects(id)
+        .then(task => {
+            res.status(200).json({task})
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: 'Could not get list of tasks'})
+        })
+})
 
 module.exports = router;
