@@ -1,6 +1,6 @@
 const express = require('express');
 
-const db = require('./projectModal');
+const db = require('./projectmodals');
 
 const router = express.Router();
 
