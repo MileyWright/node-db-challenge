@@ -1,11 +1,11 @@
 const express = require('express');
 
-const db = require('./resourcesmodals');
+const db = require('./projectsmodals');
 
 const router = express.Router();
 
 //GET Retrieving a list of resources /resources 
-router.get('/', (req,res) => {
+router.get('/resources', (req,res) => {
     db.getResources()
         .then(resources => {
             res.status(200).json({resources})
@@ -17,8 +17,9 @@ router.get('/', (req,res) => {
 })
 
 //POST  Adding Resources /resources
-router.post('/', (req, res) => {
+router.post('/resources', (req, res) => {
     const body = req.body;
+    
     db.addResources(body)
         .then(resource => {
             res.status(201).json({resource})
@@ -29,8 +30,18 @@ router.post('/', (req, res) => {
         })
 })
 
-//POST  Adding a Project /project/
-
+//POST  Adding a Project /project
+router.post('/', (req,res) => {
+    const body = req.body;
+    db.addProject(body)
+        .then(project => {
+            res.status(201).json({project})
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: 'Could not post project'})
+        })
+})
 
 //GET  Retrieving a list of projects /project/
  
