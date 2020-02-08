@@ -55,8 +55,18 @@ router.get('/', (req,res) => {
         })
 })
 
-//POST Adding tasks /project/id/tasks
-
+//POST Adding tasks /project/tasks
+router.post('/tasks', (req,res) => {
+    const body = req.body
+    db.addTask()
+        .then(task => {
+            res.status(201).json({task})
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: 'Could not post task'})
+        })
+})
 
 //GET Retrieving a list of tasks /projects/tasks
 
