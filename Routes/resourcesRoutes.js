@@ -6,7 +6,7 @@ const router = express.Router();
 
 //GET Retrieving a list of resources /resources 
 router.get('/', (req,res) => {
-    db.get()
+    db.getResources()
         .then(resources => {
             res.status(200).json({resources})
         })
@@ -19,11 +19,9 @@ router.get('/', (req,res) => {
 //POST  Adding Resources /resources
 router.post('/', (req, res) => {
     const body = req.body;
-    db.add(body)
+    db.addResources(body)
         .then(resource => {
-           
-                res.status(201).json({resource})
-            
+            res.status(201).json({resource})
         })
         .catch(err => {
             console.log(err)
