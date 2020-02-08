@@ -1,12 +1,12 @@
 const express = require('express');
 
-const db = require('./projectmodals');
+const db = require('./resourcesmodals');
 
 const router = express.Router();
 
-//GET Retrieving a list of resources /project/resources 
-router.get('/resources', (req,res) => {
-    db.getResources()
+//GET Retrieving a list of resources /resources 
+router.get('/', (req,res) => {
+    db.get()
         .then(resources => {
             res.status(200).json({resources})
         })
@@ -16,8 +16,20 @@ router.get('/resources', (req,res) => {
         })
 })
 
-//POST  Adding Resources /project/id/resources
-
+//POST  Adding Resources /resources
+router.post('/', (req, res) => {
+    const body = req.body;
+    db.add(body)
+        .then(resource => {
+           
+                res.status(201).json({resource})
+            
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: 'Could not post resources'})
+        })
+})
 
 //POST  Adding a Project /project/
 
