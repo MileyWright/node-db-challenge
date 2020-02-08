@@ -1,6 +1,6 @@
 const express = require('express');
 
-const db = require('./projectsmodals');
+const db = require('./projectmodals');
 
 const router = express.Router();
 
@@ -44,7 +44,16 @@ router.post('/', (req,res) => {
 })
 
 //GET  Retrieving a list of projects /project/
- 
+router.get('/', (req,res) => {
+    db.getProject()
+        .then(project => {
+            res.status(200).json({project})
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: 'Could not get projects'})
+        })
+})
 
 //POST Adding tasks /project/id/tasks
 

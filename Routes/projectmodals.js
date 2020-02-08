@@ -12,21 +12,21 @@ function getResources() {
     .select('id', 'name', 'description')
 }
 
-function findById(id) {
-    return db('resources')
-        .where({id})
-        .first();
-}
+// function findById(id) {
+//     return db('resources')
+//         .where({id})
+//         .first();
+// }
 function addResources(resource) {
     return db('resources')
         .insert(resource)
         
 }
 function getProject() {
-    return db('project');
+    return db('projects');
 }
 
 function addProject(project) {
-    return db('project')
+    return db('projects')
         .insert(project)
 }
