@@ -1,0 +1,27 @@
+{
+  "name": "sprintnodedb",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MileyWright/SprintNodeDb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MileyWright/SprintNodeDb/issues"
+  },
+  "homepage": "https://github.com/MileyWright/SprintNodeDb#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.20.8",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
